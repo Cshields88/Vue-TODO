@@ -1,6 +1,8 @@
 <template>
 <div>
   <todo-list :todos="todos"></todo-list>
+  <create-todo v-on:add-todo="addTodo">
+
 </div>
   
 </template>
@@ -35,11 +37,19 @@ export default {
     };
   },
   components: {
-    TodoList
+    TodoList,
+    CreateTodo
+  },
+  methods: {
+    addTodo(title) {
+      this.todos.push({
+        title,
+        done: false
+      });
+    }
   }
 };
 </script>
 
 <style>
-
 </style>
